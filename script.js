@@ -1,13 +1,21 @@
 let mensaje = "";
-//Recuperamos todos los checkbox marcados en el formulario
+//Aquí se almacena la información (valor) de los checkbox seleccionados por el usuario
 let actividades = [];
-//Comprobamos si ha consignado alguna fecha en el formulario
 function validarFormulario() {
+    //Esta expresión se va a utilizar para validar la información que introduce el usuario en el campo nombre del formulario
+    let miExpresion = /[A-Z a-z //s]{8,}/;
     let nombre = document.getElementById('nombre').value
-    if (nombre === "") {
-        document.getElementById('info_nombre').textContent = "*Debes incluir tu nombre";
+    /*Si el campo nombre está en blanco o la información facilitada por el usuario 
+    no coincide con la expresión regular no se valida la información.
+    En cualquiera de los casos se mostrará la información del error al usuario*/
+    if (nombre === "" || !miExpresion.test(nombre)) {
+        if (nombre === "") {
+            document.getElementById('info_nombre').textContent = "*Debes incluir tu nombre";
+        }
+        if (!miExpresion.test(nombre)) {
+            document.getElementById('info_nombre').textContent = "*El nombre no es valido. Solo puede contener letras mayúsculas, minúsculas o espacios y deben ser mínimo 8 carácteres";
+        }
     }
-    //Si el usuario facilita el nombre este se va a mostrar con los datos de la reserva
 
     let checkSeleccionados = comprobarCheckbox();
     //En caso de no elegir ninguna actividad se informa al usuario del error
@@ -23,7 +31,7 @@ function validarFormulario() {
 
     //En caso de que el usuario haya facilitado todos los datos requeridos se crea una cookie y se mostraran los datos de la reserva
     else {
-        if (nombre != "" && checkSeleccionados > 0 && fecha != "") {
+        if (nombre != "" && miExpresion.test(nombre) && checkSeleccionados > 0 && fecha != "") {
 
             //Este bucle recorre todos los elementos tipo checkbox recuperados del formulario y solo devuelve el valor de los elementos marcados
             for (let i = 0; i < elementos.length; i++) {
@@ -92,7 +100,7 @@ function leerReservaDeCookie() {
     (desechamos los 13 primeros elementos de la cadena)
     %2C establece a partir que elemento dividimos la cadena para crear el array*/
     let datosReserva = infoCookie.slice(13, infoCookie.length).split('%2C');
-    mensaje += '<li onclick="eliminarElemento(this)">Nombre: ' + datosReserva[0] + " ";
+    mensaje += '<li onclick="eliminarElemento(this)">Nombre: ' + datosReserva[0].replace(/%20/g," ") + " ";
     mensaje += "Actividades reservadas: ";
     /*Obtenemos los elementos desde la posición 1 hasta la posición final -1
     El elemento de la posición final corresponde a la fecha que hemos recuperado desde la cookie
