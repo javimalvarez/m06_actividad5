@@ -3,7 +3,7 @@ let mensaje = "";
 let actividades = [];
 function validarFormulario() {
     //Esta expresión se va a utilizar para validar la información que introduce el usuario en el campo nombre del formulario
-    let miExpresion = /[A-Z a-z //s]{8,}/;
+    let miExpresion = /[A-Z a-z \s]{8,}/;
     let nombre = document.getElementById('nombre').value
     /*Si el campo nombre está en blanco o la información facilitada por el usuario 
     no coincide con la expresión regular no se valida la información.
