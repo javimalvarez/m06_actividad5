@@ -9,16 +9,9 @@ function validarFormulario() {
     /*Si el campo nombre está en blanco o la información facilitada por el usuario 
     no coincide con la expresión regular no se valida la información.
     En cualquiera de los casos se mostrará la información del error al usuario*/
-    if (nombre === "" || !patronNombre.test(nombre)) {
-        if (nombre === "") {
-            document.getElementById('info_nombre').textContent = "*Debes incluir tu nombre";
-            //Refresca la página tras 4 segundos
-            setInterval("location.reload()",4000);
-        }
-        if (!patronNombre.test(nombre)) {
-            document.getElementById('info_nombre').textContent = "*El nombre no es valido. Solo puede contener letras mayúsculas y minúsculas, sin espacios y sin carácteres especiales con una longitud mínima de 8 caracteres";
-            setInterval("location.reload()",4000);
-        }
+    if (!patronNombre.test(nombre)) {
+        document.getElementById('info_nombre').textContent = "*El nombre no es valido. Solo puede contener letras mayúsculas y minúsculas, sin espacios y sin carácteres especiales con una longitud mínima de 8 caracteres";
+        setInterval("location.reload()",4000);
     }
 
     let checkSeleccionados = comprobarCheckbox();
@@ -36,21 +29,16 @@ function validarFormulario() {
     //Si la fecha no se ha cumplimentado se muestra mensaje al usuario
     let fecha = document.getElementById('fecha').value
     const patronFecha=/^\d{4}-\d{2}-\d{2}$/;//Formato fecha(AAAA/MM/DD);
-    if (fecha === ""&&!patronFecha.test(fecha)) {
-       if (fecha===""){
-        document.getElementById('info_fecha').textContent = "*Debes indicar una fecha";
-        setInterval("location.reload()",4000);
-       }
-       if (!patronFecha.test(fecha)){
-        document.getElementById('info_fecha').textContent = "*Formato fecha invalido";
-       }
+    if (!patronFecha.test(fecha)) {
+       document.getElementById('info_fecha').textContent = "*Formato fecha invalido";
+       setInterval("location.reload()",4000);
     }
 
     else {
          /*En caso de que el usuario haya facilitado todos los datos requeridos y los elementos del formulario cumplan requisitos
          se crea una cookie y se mostraran los datos de la reserva*/
         comprobarActividades();
-        if (nombre != "" && patronNombre.test(nombre) && actividades.length > 0 &&actividades.length<=2 && fecha != ""&&patronFecha.test(fecha)) {
+        if (patronNombre.test(nombre)&&actividades.length > 0&&actividades.length<=2&&patronFecha.test(fecha)) {
             let confirmarReserva = window.confirm("Indica si quieres confirmar la reserva");
             //Si el usuario confirma la reserva se crea la cookie y se muestran los datos de reserva 
             if (confirmarReserva == true) {
