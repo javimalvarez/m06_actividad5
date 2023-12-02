@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,7 +7,6 @@
     <title>Gimnasio Spartan</title>
     <script src="script.js" defer></script>
 </head>
-
 <body>
     <header class="contenedor_encabezado">
         <img class="logo" src="img/logo.png" alt="logo" title="logo">
@@ -17,23 +15,26 @@
     <main>
         <div class="contenedor_formulario">
             <form name="gimnasio">
+                <span id="mensaje">De forma temporal la actividad Capoeira no se encuentra disponible</span>
                 <legend>
                     <h3>Reserva de actividades</h3>
                 </legend><br>
                 <label for="nombre">Nombre:&nbsp</label>
-                <input type="text" id="nombre" name="nombre" title="El nombre incluíra solo letras mayúsculas, minúsculas y espacios en blanco con una longitud mínima de 8 carácteres" max="70"><br>
+                <input type="text" id="nombre" name="nombre" title="Puede contener solo letras mayúsculas y minúsculas sin espacios y sin caracteres especiales con una longitud mínima de 8 caracteres" placeholder="nickname" max="70"><br>
                 <span class="info_nombre" id="info_nombre"></span><br>
-                Actividades&nbsp:<br>
-                <input type="checkbox" name="actividad" value="Crossfit">Crossfit
+                Actividades (máximo 2 actividades)&nbsp:<br>
+                <input type="checkbox" name="actividad" value="Spinning">Pilates
+                <input type="checkbox" name="actividad" value="Spinning">Yoga
                 <input type="checkbox" name="actividad" value="Spinning">Spinning
+                <input type="checkbox" name="actividad" value="Crossfit">Crossfit
                 <input type="checkbox" name="actividad" value="BodyPump">BodyPump<br>
                 Artes marciales:&nbsp
-                <input type="checkbox" name="actividad" value="Muay Thai">Muay Thai
-                <input type="checkbox" name="actividad" value="Capoeria">Capoeira
+                <input type="checkbox" name="actividad" value="Capoeira">Capoeira
                 <input type="checkbox" name="actividad" value="Taekwondo">Taekwondo
+                <input type="checkbox" name="actividad" value="Muay thai">Muay thai
                 <input type="checkbox" name="actividad" value="Krav maga">Krav maga
                 <input type="checkbox" name="actividad" value="Boxeo">Boxeo
-                <input type="checkbox" name="actividad" value="MMA">MMA<br>
+                <input type="checkbox" name="actividad" value="MMA">MMA<br><br>
                 <span class="info_actividad" id="info_actividad"></span><br><br>
                 <label for="fecha">Fecha reserva:&nbsp</label>
                 <input type="date" id="fecha" name="fecha"><br>
@@ -41,7 +42,6 @@
                 <input type="submit" id="enviar" name="enviar" value="Enviar">
             </form>
         </div>
-        <span class="contenedor"><img src="img/ticket.png"></span>
         <span class="contenedor">AQUÍ APARECEN LAS RESERVAS<br>Puedes eliminar tu reserva pulsando sobre ella</span>
         <div class="contenedor_reservas" id="contenedor_reservas">
             <ul id="lista_reservas"></ul>
@@ -55,5 +55,4 @@
         </div>
     </footer>
 </body>
-
 </html>
