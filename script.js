@@ -97,4 +97,4 @@ function leerReservaDeCookie(nombreCookie){
         }
         return null;//Return null si no hay cookies
     }
-
+}
