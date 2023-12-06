@@ -17,7 +17,7 @@ function validarFormulario() {
     //Solo se admiten actividades incluidas dentro del patrón que hemos definido
     const patronActividades = /(Pilates|Yoga|Spinning|Crossfit|BodyPump|Taekwondo|Muay thai|Krav maga|Boxeo)/;
     if (!patronActividades.test(actividad)){
-        document.getElementById('info_actividad').textContent = "*La actividad "+actividad+" no disponible se está disponible de forma temporal";
+        document.getElementById('info_actividad').textContent = "*La actividad "+actividad+" no está disponible en este momento";
         setInterval("location.reload()",4000);
     }
 
