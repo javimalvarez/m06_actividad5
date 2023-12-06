@@ -87,14 +87,14 @@ function guardarReservaEnCookie(nombreCookie,datosCookie, duracion) {
     return document.cookie;
 }
 
+//Recupera información de una cookie
 function leerReservaDeCookie(nombreCookie){
-    let cookies=document.cookie.split(';')
+    let cookies=document.cookie.split(';')//Recupera todas las cookies del document.cookie
     for (let i=0; i<cookies.length; i++){
-        var cookie = cookies[i].trim();
-        if(cookie.startsWith (nombreCookie+"=")){
+        var cookie = cookies[i].trim();//Elimina los espacios en blanco al inicio y final de cadena
+        if(cookie.startsWith (nombreCookie+"=")){//Recupera solo la cookie cuyo nombre coincide con nombreCookie
             return cookie.substring(nombreCookie.length+1);
         }
-        return null;
+        return null;//Return null si no hay cookies
     }
-}
 
