@@ -3,7 +3,7 @@ let mensaje = "";
 //Aquí se almacena la información (valor) de los checkbox seleccionados por el usuario
 function validarFormulario() {
     //Esta expresión se va a utilizar para validar la información que introduce el usuario en el campo nombre del formulario
-    const patronNombre = /^\w\D+(?<!\W+)$/;//Cualquier caracter A-Z a-z y _ con un tamaño mínimo de 8 caracteres. No permite el uso de símbolos tales como @ o ! ni números
+    const patronNombre = /^\w\D+(?<!\W+)$/;//Cualquier caracter A-Z a-z y _. No permite el uso de símbolos tales como @ o ! ni números
     let nombre = document.getElementById('nombre').value
     /*Si el campo nombre está en blanco o la información facilitada por el usuario 
     no coincide con la expresión regular no se valida la información.
@@ -47,9 +47,9 @@ function validarFormulario() {
             }
 
             let infoCookie = leerReservaDeCookie(nombreCookie);//Recuperamos los datos de la cookie desde document.cookie y almacenamos la información en una variable
+            //Se muestra por consola los datos de la cookie
             console.log(infoCookie);
             //Variable que almacena el nombre de la cookie recuperado desde la cookie. Esta información se utiliza como identificador del elemento li al que va asociado la cookie
-            //Se muestra por consola los datos de la cookie
             mensaje += `<li id="${nombreCookie}">`+datosCookie[0]+"-> actividades reservadas: "+datosCookie[1]+", fecha reserva: "+datosCookie[2]+ "</li>";
             
             /*Toda la información recuperada desde la cookie y formateada convenientemente
@@ -83,7 +83,7 @@ function guardarReservaEnCookie(nombreCookie,datosCookie, duracion) {
     var validez = new Date();
     //Establecemos un nuevo valor para el objeto tipo Date validez sumando a la fecha actual la duración que marcamos hasta que caduque la cookie
     validez.setDate(validez.getDate() + duracion);
-    document.cookie = encodeURIComponent(nombreCookie)+"=" + encodeURIComponent(datosCookie) + "; expires=" + validez.toUTCString() + "path=/;";
+    document.cookie = encodeURIComponent(nombreCookie)+"=" + encodeURIComponent(datosCookie) + "; expires=" + validez.toUTCString() + "; path=/;";
     return document.cookie;
 }
 
@@ -93,7 +93,7 @@ function leerReservaDeCookie(nombreCookie){
     for (let i=0; i<cookies.length; i++){
         var cookie = cookies[i].trim();//Elimina los espacios en blanco al inicio y final de cadena
         if(cookie.startsWith (nombreCookie+"=")){//Recupera solo la cookie cuyo nombre coincide con nombreCookie
-            return cookie.substring(nombreCookie.length+1);
+            return decodeURIComponent(cookie.substring(nombreCookie.length+1));
         }
         return null;//Return null si no hay cookies
     }
