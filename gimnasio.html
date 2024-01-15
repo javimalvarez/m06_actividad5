@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="styles/estilos.css">
+        <title>Gimnasio Spartan</title>
+        <script src="script.js" defer></script>
+    </head>
+
+    <body>
+        <header class="contenedor_encabezado">
+            <img class="logo" src="img/logo.png" alt="logo" title="logo">
+            <h1 class="logo_title"> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspGimnasio Spartan</h1>
+        </header>
+        
+        <main>
+            <div class="contenedor_formulario">
+                <form name="gimnasio">
+                    <legend>
+                        <h3>Reserva de actividades</h3>
+                    </legend><br>
+                    <label for="nombre">Nombre:&nbsp</label>
+                    <input type="text" id="nombre" name="nombre" title="Solo puede contener letras mayúsculas, minúsculas y sin carácteres especiales" placeholder="nickname" max="70"><br>
+                    <span class="info_nombre" id="info_nombre"></span><br><br>
+                    Actividades&nbsp:
+                    <select id="actividad">
+                        <option value="Pilates">Pilates</option>
+                        <option value="Yoga">Yoga</option>
+                        <option value="Spinning">Spinning</option>
+                        <option value="Crossfit">Crossfit</option>
+                        <option value="BodyPump">BodyPump</option>
+                        <optgroup label="Artes marciales">
+                            <option value="Capoeira">Capoeira</option>
+                            <option value="Taekwondo">Taekwondo</option>
+                            <option value="Muay thai">Muay thai</option>
+                            <option value="Krav maga">Krav maga</option>
+                            <option value="Boxeo">Boxeo</option>
+                            <option value="MMA">MMA</option>
+                        </optgroup>
+                    </select><br>
+                    <span class="info_actividad" id="info_actividad"></span><br><br>
+                    <label for="fecha">Fecha reserva:&nbsp</label>
+                    <input type="date" id="fecha" name="fecha"><br>
+                    <span class="info_fecha" id="info_fecha"></span><br><br>
+                    <input type="submit" id="enviar" name="enviar" value="Reservar">
+                </form>
+            </div>
+            <span class="contenedor">AQUÍ APARECEN LAS RESERVAS<br>Puedes eliminar tu reserva pulsando sobre ella</span>
+            <div class="contenedor_reservas" id="contenedor_reservas">
+                <ul id="lista_reservas"></ul>
+            </div>
+        </main>
+
+        <footer>
+            <div>
+                © Gimnasio Spartan<br>
+                Desarrollo de Aplicaciones Web | Linkia FP<br>
+                Diciembre 2023 - Autor: Francisco Javier Martínez Álvarez<br>
+            </div>
+        </footer>
+    </body>
+</html>

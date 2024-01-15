@@ -100,3 +100,18 @@ footer {
 li {
     list-style: none;
 }
+
+#mensaje{
+    font-weight: bold;
+    font-size: 1.2em;
+    color: orange;
+}
+
+#enviar{
+    font-size: 1em;
+    background-color: orange;
+    border: orange .9px solid;
+    border-radius: 3px;
+    padding: 5px;
+    margin-left: 42%;
+}
